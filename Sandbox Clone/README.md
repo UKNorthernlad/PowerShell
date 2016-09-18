@@ -4,7 +4,7 @@ These scripts can be used to upload a .vhd disk image (i.e. Hyper-V format) from
 
 If your existing virtual machine is in VMWare .vmdk format you can use the [Microsoft Virtual Machine Converter 3.0][ToolSet] tool set to convert it. Ensure you have both the *.vmdk and *-flat.vdmk files available else the conversion will fail.
 
-None of these are what you would call highly polished - they do the job they are intended to.
+None of these scripts are what you would call highly polished - they do the job they are intended to!
 
 ## How to use the scripts.
 
