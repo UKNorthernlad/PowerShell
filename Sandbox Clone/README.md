@@ -16,9 +16,9 @@ There are only three scripts you need to be concerned with initially.
 
 To build a new environment:
 
-1. Update Variables.ps1 to set your SubscriptionGuid & ResourceGroupName etc.
-2. Run MigrateDisks.ps1. You'll only need to do this once.
-3. Run CreateNewEnvironment.ps1. Ensure you set the $environmentname variable in Variables.ps1 to something unique each time you create a new environment as this will be prefixed to the resource group which will hold your new virtual machine.
+1. **Update Variables.ps1** to set your SubscriptionGuid & ResourceGroupName etc.
+2. **Run MigrateDisks.ps1**. You'll only need to do this once.
+3. **Run CreateNewEnvironment.ps1**. Ensure you set the $environmentname variable in Variables.ps1 to something unique each time you create a new environment as this will be prefixed to the resource group which will hold your new virtual machine.
 
 <!-- LINKS -->
 [ToolSet]: http://www.microsoft.com/en-gb/download/details.aspx?id=42497
