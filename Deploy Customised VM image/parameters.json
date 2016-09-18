@@ -1,0 +1,95 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "westeurope"
+    },
+    "virtualMachineName": {
+      "value": "vmtest01"
+    },
+    "virtualMachineSize": {
+      "value": "Standard_A4"
+    },
+    "adminUsername": {
+      "value": "topboy99"
+    },
+    "storageAccountName": {
+      "value": "birdstore99"
+    },
+    "virtualNetworkName": {
+      "value": "BaseVNet"
+    },
+    "networkInterfaceName": {
+      "value": "vmtest01720"
+    },
+    "networkSecurityGroupName": {
+      "value": "vmtest01"
+    },
+
+    "sourceVHDImageUri": {
+      "value": "https://birdstore99.blob.core.windows.net/system/Microsoft.Compute/Images/vhdimages/YourTemplatePrefix-osDisk.someguid.vhd"
+    },
+
+    "adminPassword": {
+      "value": "password"
+    },
+    "diagnosticsStorageAccountName": {
+      "value": "bird99diag"
+    },
+    "diagnosticsStorageAccountId": {
+      "value": "Microsoft.Storage/storageAccounts/bird99diag"
+    },
+    "diagnosticsStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "subnetName": {
+      "value": "default"
+    },
+    "publicIpAddressName": {
+      "value": "vmtest01"
+    },
+    "publicIpAddressType": {
+      "value": "Dynamic"
+    },
+    "sqlConnectivityType": {
+      "value": "Private"
+    },
+    "sqlPortNumber": {
+      "value": 1433
+    },
+    "sqlStorageDisksCount": {
+      "value": 1
+    },
+    "sqlStorageWorkloadType": {
+      "value": "GENERAL"
+    },
+    "sqlStorageDisksConfigurationType": {
+      "value": "NEW"
+    },
+    "sqlStorageStartingDeviceId": {
+      "value": 2
+    },
+    "sqlStorageDeploymentToken": {
+      "value": 52904
+    },
+    "sqlAutopatchingDayOfWeek": {
+      "value": "Sunday"
+    },
+    "sqlAutopatchingStartHour": {
+      "value": "2"
+    },
+    "sqlAutopatchingWindowDuration": {
+      "value": "60"
+    },
+    "ex0_vmName": {
+      "value": "vmtest01"
+    },
+    "ex0_location": {
+      "value": "westeurope"
+    },
+    "ex0_fileUris": {
+      "value": "https://someserver.com/doWork.ps1"
+    }
+  }
+}
