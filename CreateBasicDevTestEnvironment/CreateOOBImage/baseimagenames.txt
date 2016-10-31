@@ -1,0 +1,69 @@
+﻿Get-AzureRmVMImagePublisher -location "westeurope"
+...
+MicrosoftSQLServer
+...
+
+
+Get-AzureRmVMImageOffer -location "westeurope" -publishername "MicrosoftSQLServer"
+SQL2008R2SP3-WS2008R2SP1
+SQL2008R2SP3-WS2012
+SQL2012SP2-WS2012
+SQL2012SP2-WS2012R2
+SQL2012SP3-WS2012R2
+SQL2012SP3-WS2012R2-BYOL
+SQL2014-WS2012R2
+SQL2014SP1-WS2012R2
+SQL2014SP1-WS2012R2-BYOL
+SQL2014SP2-WS2012R2
+SQL2016-WS2012R2
+SQL2016-WS2012R2-BYOL
+SQL2016-WS2016
+SQL2016CTP3-WS2012R2
+SQL2016CTP3.1-WS2012R2
+SQL2016CTP3.2-WS2012R2
+SQL2016RC3-WS2012R2v2
+
+
+Get-AzureRmVMImageSku -location "westeurope" -publishername "MicrosoftSQLServer" -Offer "SQL2012SP3-WS2012R2"
+Enterprise
+Express
+Standard
+Web
+
+
+Examples - These parameters can be copied into the CreateVM.parameters.json file.
+#################################################################################
+#################################################################################
+
+
+WS2012R2
+########
+
+	"publisher": {
+      "value": "MicrosoftWindowsServer"
+    },
+    "offer": {
+      "value": "WindowsServer"
+    },
+    "sku": {
+      "value": "2012-R2-Datacenter"
+    }
+
+
+SQL 2014 with SP2 on WS2012R2
+##############################
+
+    "publisher": {
+      "value": "MicrosoftSQLServer"
+    },
+    "offer": {
+      "value": "SQL2014SP2-WS2012R2"
+    },
+    "sku": {
+      "value": "Standard"
+    }
+
+
+
+
+
