@@ -7,48 +7,31 @@
       "defaultValue": "[resourceGroup().location]"
     },
     "baseresourcegroup": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "Base"
     },
     "virtualMachineName": {
       "type": "string"
     },
-    "virtualMachineSize": {
-      "type": "string"
-    },
-    "publisher": {
-      "type": "string"
-    },
-    "offer": {
-      "type": "string"
-    },
-    "sku": {
-      "type": "string"
-    },
-    "downloadfile1": {
-      "type": "string"
-    },
     "adminUsername": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "adminguy"
     },
     "storageAccountName": {
       "type": "string"
     },
-    "virtualNetworkName": {
-      "type": "string"
-    },
     "adminPassword": {
       "type": "securestring"
-    },
-    "subnetName": {
-      "type": "string"
-    },
-    "publicIpAddressType": {
-      "type": "string"
     }
   },
   "variables": {
-    "vnetId": "[resourceId(parameters('baseresourcegroup'),'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-    "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+    "subnetName" : "Subnet",
+    "virtualNetworkName" : "baseVNet",
+    
+    "downloadfile1": "[concat('https://',parameters('storageAccountName'),'.blob.core.windows.net/scripts/doWork.ps1')]",
+
+    "vnetId": "[resourceId(parameters('baseresourcegroup'),'Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+    "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
     "metricsresourceid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/', 'Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]",
     "metricsclosing": "[concat('<Metrics resourceId=\"', variables('metricsresourceid'), '\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]",
     "metricsstart": "<WadCfg><DiagnosticMonitorConfiguration xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\" overallQuotaInMB=\"4096\"><DiagnosticInfrastructureLogs scheduledTransferPeriod=\"PT1M\" scheduledTransferLogLevelFilter=\"Warning\"/><WindowsEventLog scheduledTransferPeriod=\"PT1M\"><DataSource name=\"Security!*[System[(Level = 1) or (Level = 2)]]\"/><DataSource name=\"Application!*[System[(Level = 1) or (Level = 2)]]\"/><DataSource name=\"Windows Azure!*[System[(Level = 1) or (Level = 2)]]\"/><DataSource name=\"System!*[System[(Level = 1) or (Level = 2)]]\"/><DataSource name=\"System!*[System[Provider[@Name='Microsoft Antimalware']]]\"/></WindowsEventLog>",
@@ -93,7 +76,7 @@
           }
         },
         "hardwareProfile": {
-          "vmSize": "[parameters('virtualMachineSize')]"
+          "vmSize": "Standard_A4"
         },
         "storageProfile": {
           "imageReference": {
@@ -161,7 +144,7 @@
         "i-am-used-in-server": "[parameters('virtualMachineName')]"
       },
       "properties": {
-        "publicIpAllocationMethod": "[parameters('publicIpAddressType')]"
+        "publicIpAllocationMethod": "Dynamic"
       }
     },
     {
@@ -210,7 +193,7 @@
             "value": "[resourceGroup().location]"
           },
           "fileUris": {
-            "value": "[parameters('downloadfile1')]"
+            "value": "[variables('downloadfile1')]"
           },
           "arguments": {
             "value": ""

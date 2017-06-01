@@ -3,8 +3,8 @@
 #Requires -Module Azure.Storage
 
 Param(
-	[string] [Parameter(Mandatory=$true)] $ResourceGroupName,
-    [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
+	[string] $ResourceGroupName = "Base",
+    [string] $ResourceGroupLocation = "WestEurope",
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
@@ -128,7 +128,7 @@ if ($ValidateOnly) {
                                                                                   -Verbose)
 }
 else {
-    New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
+   $result =  New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
                                        -ResourceGroupName $ResourceGroupName `
                                        -TemplateFile $TemplateFile `
                                        -TemplateParameterFile $TemplateParametersFile `
@@ -138,7 +138,9 @@ else {
 
     $ErrorMessages = $ErrorMessages | ForEach-Object { $_.Exception.Message.TrimEnd("`r`n") }
 }
-
+write-host "XXXX"
+$result
+write-host "XXXX"
 if ($ErrorMessages)
 {
     "", ("{0} returned the following errors:" -f ("Template deployment", "Validation")[[bool]$ValidateOnly]), @($ErrorMessages) | ForEach-Object { Write-Output $_ }
