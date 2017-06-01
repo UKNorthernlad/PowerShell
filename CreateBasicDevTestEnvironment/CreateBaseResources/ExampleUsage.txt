@@ -4,7 +4,3 @@
 
 	Add-AzureRMAccount
     .\Build.ps1 -ResourceGroupName Base -ResourceGroupLocation "WestEurope"
-
-
-
-

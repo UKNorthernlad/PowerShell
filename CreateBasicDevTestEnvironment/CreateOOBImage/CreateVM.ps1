@@ -57,8 +57,6 @@ else {
     
     $creationParameters = @{"storageAccountName"="$((find-azurermresource -Tag @{'buildScriptStorage'='true'}).Name)";"virtualMachineName"=$ServerName} 
 
-
-
     New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
                                        -ResourceGroupName $ResourceGroupName `
                                        -TemplateFile $TemplateFile `

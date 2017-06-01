@@ -3,14 +3,14 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountNamePrefix": {
-      "type": "String"
+      "type": "string"
     },
     "virtualNetworkName": {
-      "type": "String",
+      "type": "string",
       "defaultValue": "baseVnet"
     },
     "subnetName": {
-      "type": "String",
+      "type": "string",
       "defaultValue": "Default"
     }
   },

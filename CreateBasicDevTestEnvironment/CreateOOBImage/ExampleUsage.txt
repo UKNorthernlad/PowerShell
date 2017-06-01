@@ -1,9 +1,4 @@
-﻿
-
-
-
-1. Open the CreateVM.parameters.json file and ensure the following entires are to your choosing:
-
+﻿1. Open the CreateVM.parameters.json file and ensure the following entires are to your choosing:
 
 baseresourcegroup - This is the name of the resource group that holds your base VNet and StorageAccount.
 storageAccountName - This needs to be set the same as the StorageAccount created in the base resource group.
@@ -13,7 +8,6 @@ virtualMachineName - name of the virtual machine you want to build. Must be uniq
 virtualMachineSize - Size of the VM in standard Azure unit sizes, e.g. Standard_A4
 adminUsername & adminPassword - Any username except "admin". Password must be longer than 8 chars and must meet complexity requirements. Come on, you know what those are, password123 won't cut it!
 downloadfile1 - The URI to a publically accessible powershell file that will be downloaded after the machine has been built and run, e.g. "https://store45649fkwl.blob.core.windows.net/scripts/dowork.ps1"
-
 
 2. Once these have been set, run the script like this:-
 
