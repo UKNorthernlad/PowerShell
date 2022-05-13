@@ -34,7 +34,7 @@ $headers = @{
  }
 
 # Invoke the request.
-# REST API Reference = https://docs.microsoft.com/en-us/rest/api/azure/devops/build/definitions/list?view=azure-devops-rest-6.0
+# REST API Reference = https://docs.microsoft.com/en-us/rest/api/azure/devops/build/builds/get?view=azure-devops-rest-7.1
 $builds = Invoke-RestMethod -Method Get -Uri $getBuildsURL -Headers $headers
 
 $status = "`nThere are currently $($buildDefinitions.value.Count) builds in the 'notStarted' state located in https://dev.azure.com/" + $Organization + "/" + $Project + ".`n"
@@ -47,6 +47,7 @@ if($clearQueue)
   Write-Host "`nDeleting the following builds...`n"
   foreach ($queuedBuild in $buildDefinitions.value.id)
   {
+    # REST API Reference = https://docs.microsoft.com/en-us/rest/api/azure/devops/build/builds/delete?view=azure-devops-rest-7.1
     $deleteBuildsURL = "https://dev.azure.com/$Organization/$Project" + "/_apis/build/builds/" + "$queuedBuild" + "?api-version=7.1-preview.7"
     Write-Host $deleteBuildsURL
     $result = Invoke-RestMethod -Method DELETE -Uri $deleteBuildsURL -Headers $headers   
