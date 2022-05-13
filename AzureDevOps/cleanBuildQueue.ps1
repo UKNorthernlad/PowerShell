@@ -1,10 +1,10 @@
-﻿[string]$Organization = "myOrg"
+[string]$Organization = "myOrg"
 [string]$Project = "SomeProjectName"
 [string]$PersonalAccessToken = "qwertyuiopasdfghjklzxcvbnm1234567890"
 [bool]$clearQueue = $true 
-    
+ 
+# REST API Reference = https://docs.microsoft.com/en-us/rest/api/azure/devops/build/builds/get?view=azure-devops-rest-7.1
 $getBuildsURL = "https://dev.azure.com/$Organization/$Project" + "/_apis/build/builds?statusFilter=notStarted&api-version=7.1-preview.7"
-
 
 function Build-Credential
 {
@@ -34,7 +34,6 @@ $headers = @{
  }
 
 # Invoke the request.
-# REST API Reference = https://docs.microsoft.com/en-us/rest/api/azure/devops/build/builds/get?view=azure-devops-rest-7.1
 $builds = Invoke-RestMethod -Method Get -Uri $getBuildsURL -Headers $headers
 
 $status = "`nThere are currently $($buildDefinitions.value.Count) builds in the 'notStarted' state located in https://dev.azure.com/" + $Organization + "/" + $Project + ".`n"
